@@ -1,0 +1,46 @@
+.MuiContainer-root {
+    width: 100vw;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+}
+
+.auth-form {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto !important;
+    background-color: #fff;
+    min-height: 70%;
+    width: 60%;
+    position: absolute;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-tab {
+    border-top-left-radius: 40px ;
+    border-top-right-radius: 40px ;
+    background-color: #0F1B35 ;
+}
+
+.auth-tab_detail {
+    color: #fff;
+}
+
+.css-1aquho2-MuiTabs-indicator {
+    height: 6px !important;
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-inline: 20%;
+}
+

@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import AuthContainer from "./pages/AuthContainer/AuthContainer";
+import Home from "./pages/Home/Home";
+import Navbar from "./pages/Navbar/Navbar";
+import { YourWork } from "./pages/YourWork/YourWork";
 
 function App() {
+  const currentLocation = window.location.pathname;
+  React.useEffect(() => {
+    const routerPath = ["/home", "/authentication", "/your-work"];
+    if (!routerPath.includes(currentLocation)) {
+      window.location.pathname = routerPath[0];
+    }
+  }, [currentLocation]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/your-work" element={<YourWork />} />
+        </Route>
+        <Route path="/authentication" element={<AuthContainer />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
