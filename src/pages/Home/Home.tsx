@@ -1,10 +1,15 @@
 import { Container } from "@mui/material";
 import React from "react";
+import EncryptContainer from "../EncryptContainer/EncryptContainer";
 
 const Home = () => {
   return (
-    <Container sx={{ height: "auto" }} maxWidth={false}>
-      Hello
+    <Container
+      sx={{ minHeight: "93.4vh" }}
+      maxWidth={false}
+      className="background-image"
+    >
+      <EncryptContainer />
     </Container>
   );
 };

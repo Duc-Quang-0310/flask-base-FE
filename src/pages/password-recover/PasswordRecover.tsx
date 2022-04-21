@@ -2,6 +2,8 @@ import React from "react";
 import { TextField, Button, CircularProgress, Typography } from "@mui/material";
 import { Formik as FormValidation } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { SnackBar } from "../Snackbar/SnackBar";
 
 interface PasswordRecoverProps {
   setDisable: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,16 +37,30 @@ export const PasswordRecover: React.FC<PasswordRecoverProps> = ({
 }) => {
   const [loading, setLoading] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
+  const [message, setMessage] = React.useState<string>("");
+  const [openState, setopenState] = React.useState<boolean>(false);
 
   async function submit(params: PasswordRecoverFormInitValue) {
     try {
-      console.log("params: ", params);
+      setErrorMessage("");
       setLoading(true);
       setDisable(loading);
       //handle axios
+
+      const { data } = await axios.patch(
+        "http://localhost:5555/account/password-recover",
+        { username: params.email, password: params.password },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+      setMessage(data.message);
+      setopenState(true);
     } catch (error: any) {
       const response: any = error.response;
-      setErrorMessage(response.message);
+      setErrorMessage(response.data.reason);
     } finally {
       setLoading(false);
       setDisable(loading);
@@ -146,6 +162,12 @@ export const PasswordRecover: React.FC<PasswordRecoverProps> = ({
           </form>
         )}
       </FormValidation>
+      <SnackBar
+        openState={openState}
+        SnackBarType="success"
+        handleClose={setopenState}
+        message={message}
+      />
     </React.Fragment>
   );
 };

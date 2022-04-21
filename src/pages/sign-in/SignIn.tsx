@@ -42,7 +42,7 @@ export const SignIn: React.FC<SignInProps> = ({ setDisable }) => {
       );
 
       localStorage.setItem("userId", data.userId);
-      navigate("/");
+      navigate("/home");
       //handle axios
     } catch (error: any) {
       const response: any = error.response.data;

@@ -8,10 +8,11 @@ import {
   MenuItem,
 } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [open, setOpen] = React.useState<boolean>(false);
   const userId = localStorage.getItem("userId");
@@ -27,8 +28,19 @@ const Navbar = () => {
     navigate("/authentication");
   };
 
-  const handleSeeYourWork = () => {
-    navigate("/your-work");
+  const handleRSA = () => {
+    navigate("/text-rsa");
+  };
+
+  const handlePicture = () => {
+    navigate("/home");
+  };
+
+  const render = () => {
+    if (pathname === "/text-rsa") {
+      return <MenuItem onClick={handlePicture}>Watermark with image</MenuItem>;
+    }
+    return <MenuItem onClick={handleRSA}>Text Encode</MenuItem>;
   };
 
   const handleLogOut = () => {
@@ -38,7 +50,7 @@ const Navbar = () => {
     }, 1000);
   };
   return (
-    <>
+    <div>
       <AppBar position="static">
         <Toolbar variant="regular" sx={{ width: "100%" }}>
           <Typography variant="h6" color="inherit" component="div">
@@ -61,21 +73,21 @@ const Navbar = () => {
               }}
             >
               {userId === null ? (
-                <>
+                <div>
                   <MenuItem onClick={handleLogin}>Login</MenuItem>
-                </>
+                  {render()}
+                </div>
               ) : (
-                <>
-                  <MenuItem onClick={handleSeeYourWork}>See your work</MenuItem>
+                <div>
                   <MenuItem onClick={handleLogOut}>Log out</MenuItem>
-                </>
+                </div>
               )}
             </Menu>
           </IconButton>
         </Toolbar>
       </AppBar>
       <Outlet />
-    </>
+    </div>
   );
 };
 

@@ -5,12 +5,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthContainer from "./pages/AuthContainer/AuthContainer";
 import Home from "./pages/Home/Home";
 import Navbar from "./pages/Navbar/Navbar";
-import { YourWork } from "./pages/YourWork/YourWork";
+import TextRSA from "./pages/TextRSA/TextRSA";
 
 function App() {
   const currentLocation = window.location.pathname;
   React.useEffect(() => {
-    const routerPath = ["/home", "/authentication", "/your-work"];
+    const routerPath = ["/home", "/authentication", "/text-rsa"];
     if (!routerPath.includes(currentLocation)) {
       window.location.pathname = routerPath[0];
     }
@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route path="/home" element={<Home />} />
-          <Route path="/your-work" element={<YourWork />} />
+          <Route path="/text-rsa" element={<TextRSA />} />
         </Route>
         <Route path="/authentication" element={<AuthContainer />} />
       </Routes>

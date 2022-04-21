@@ -6,6 +6,7 @@ import { SignIn } from "../sign-in/SignIn";
 import { SignUp } from "../sign-up/SignUp";
 import { PasswordRecover } from "../password-recover/PasswordRecover";
 import { withStyles } from "@mui/styles";
+import { useNavigate } from "react-router-dom";
 
 const ActionTab = withStyles({
   root: {
@@ -21,6 +22,7 @@ const ActionTab = withStyles({
 const AuthContainer = () => {
   const [value, setValue] = React.useState("sign-in-tab");
   const [disable, setDisable] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -57,6 +59,13 @@ const AuthContainer = () => {
                   value="password-recover-tab"
                   className="auth-tab_detail"
                   disabled={disable}
+                />
+                <ActionTab
+                  label="Home"
+                  className="auth-tab_detail"
+                  disabled={disable}
+                  onClick={() => navigate("/home")}
+                  sx={{ marginLeft: "auto" }}
                 />
               </TabList>
             </Box>
