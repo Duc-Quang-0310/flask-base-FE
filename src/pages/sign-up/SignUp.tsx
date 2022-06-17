@@ -45,7 +45,7 @@ export const SignUp: React.FC<SignUpProps> = ({ setDisable }) => {
       setDisable(loading);
       //handle axios
       const { data } = await axios.post(
-        "http://localhost:5555/account/sign-up",
+        "http://localhost:6200/account/sign-up",
         { username: params.email, password: params.password },
         {
           headers: {
@@ -124,7 +124,7 @@ export const SignUp: React.FC<SignUpProps> = ({ setDisable }) => {
             <TextField
               id="standard-reTypePassword"
               label="Password Confirm"
-              type="reTypePassword"
+              type="password"
               variant="outlined"
               value={values.reTypePassword}
               name="reTypePassword"

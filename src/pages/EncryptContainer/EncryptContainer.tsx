@@ -44,7 +44,7 @@ const EncryptContainer = () => {
   const sendRequest = async (formSend: FormData) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:5555/account/encode-picture",
+        "http://localhost:6200/account/encode-picture",
         formSend,
         {
           headers: {

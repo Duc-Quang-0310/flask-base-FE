@@ -43,3 +43,8 @@
 .flex {
   display: flex;
 }
+
+.middle-block {
+  justify-content: space-evenly;
+  flex-direction: column;
+}

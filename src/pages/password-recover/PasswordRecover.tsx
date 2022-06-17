@@ -48,7 +48,7 @@ export const PasswordRecover: React.FC<PasswordRecoverProps> = ({
       //handle axios
 
       const { data } = await axios.patch(
-        "http://localhost:5555/account/password-recover",
+        "http://localhost:6200/account/password-recover",
         { username: params.email, password: params.password },
         {
           headers: {
@@ -130,7 +130,7 @@ export const PasswordRecover: React.FC<PasswordRecoverProps> = ({
             <TextField
               id="standard-reTypePassword"
               label="Password Confirm"
-              type="reTypePassword"
+              type="password"
               variant="outlined"
               value={values.reTypePassword}
               name="reTypePassword"

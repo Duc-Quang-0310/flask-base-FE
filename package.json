@@ -20,6 +20,7 @@
     "file-saver": "^2.0.5",
     "formik": "^2.2.9",
     "react": "^18.0.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.0.0",
     "react-drag-drop-files": "^2.3.5",
     "react-dropzone": "^12.0.5",
@@ -54,6 +55,7 @@
     ]
   },
   "devDependencies": {
-    "@types/file-saver": "^2.0.5"
+    "@types/file-saver": "^2.0.5",
+    "@types/react-copy-to-clipboard": "^5.0.2"
   }
 }

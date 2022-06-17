@@ -80,6 +80,7 @@ const Navbar = () => {
               ) : (
                 <div>
                   <MenuItem onClick={handleLogOut}>Log out</MenuItem>
+                  {render()}
                 </div>
               )}
             </Menu>
